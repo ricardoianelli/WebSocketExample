@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Websocket example test page</title>
+</head>
+<body>
+<script>
+    let webSocketClient = new WebSocket('ws://localhost:5000/');
+    webSocketClient.onopen = function() {
+        console.log('WebSocket connection established');
+        webSocketClient.send('Hello Server!');
+    };
+
+    webSocketClient.onmessage = function(event) {
+        console.log('Message from server: ' + event.data);
+    };
+
+    webSocketClient.onclose = function(event) {
+        console.log('WebSocket connection closed');
+    };
+
+    webSocketClient.onerror = function(error) {
+        console.log('WebSocket error: ' + error);
+    };
+</script>
+</body>
+</html>
